@@ -27,33 +27,33 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setEmailError("Please enter a valid email.");
-    } else {
-      setEmailError("");
-    }
-  };
+  // const validateEmail = (email) => {
+  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  //   if (!emailRegex.test(email)) {
+  //     setEmailError("Please enter a valid email.");
+  //   } else {
+  //     setEmailError("");
+  //   }
+  // };
 
-  const validatePassword = (password) => {
-    if (password.length < 8) {
-      setPasswordError("Password must be 8 characters long.");
-    } else {
-      setPasswordError("");
-    }
-  };
+  // const validatePassword = (password) => {
+  //   if (password.length < 8) {
+  //     setPasswordError("Password must be 8 characters long.");
+  //   } else {
+  //     setPasswordError("");
+  //   }
+  // };
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
-    if (e.target.name === "email") {
-      validateEmail(e.target.value);
-    } else if (e.target.name === "password") {
-      validatePassword(e.target.value);
-    }
+    // if (e.target.name === "email") {
+    //   validateEmail(e.target.value);
+    // } else if (e.target.name === "password") {
+    //   validatePassword(e.target.value);
+    // }
   };
 
   const handleShowPassword = () => {
@@ -99,7 +99,7 @@ const Login = () => {
   return (
     <div>
       <Container>
-        <AccountCircleIcon variant="outlined" style={{ fontSize: 220 }} />
+        <AccountCircleIcon variant="outlined" color="primary" style={{ fontSize: 220 }} />
         <h1 style={{ fontSize: "40px" }}>Welcome!</h1>
         <p style={{ textAlign: "center", fontSize: "20px" }}>
           Let's connect to your workspace.<br></br>please enter your email to continue
@@ -110,7 +110,6 @@ const Login = () => {
           color="primary"
           type="email"
           name="email"
-          error={!!emailError}
           value={formData.email}
           onChange={handleChange}
           style={{ width: "500px", height: "20px" }}
@@ -121,7 +120,6 @@ const Login = () => {
           color="primary"
           type={showPassword ? "text" : "password"}
           name="password"
-          error={!!passwordError}
           value={formData.password}
           onChange={handleChange}
           style={{ marginTop: "10px", width: "500px", height: "5px", margin: "45px" }}

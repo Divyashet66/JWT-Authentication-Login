@@ -4,7 +4,7 @@ const User = require("./schema");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-mongoose.connect("mongodb://35.207.242.133:27017/test", { useNewUrlParser: true });
+mongoose.connect("mongodb://35.207.221.123:27017/test", { useNewUrlParser: true });
 
 const express = require("express");
 const app = express();
