@@ -33,17 +33,22 @@ app.post("/register", async (req, res) => {
 app.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
+    // const user = {
+    //   _id: 1,
+    //   email: "rajat@gmail.com",
+      
+    // }
     // console.log(req.body.email);
     if (!user) {
       console.log(user);
-      res.status(401).send("Invalid username");
+      return res.status(401).send("Invalid username");
     }
     console.log(user);
-    const token = jwt.sign({ userId: user._id }, "secret-key", { expiresIn: "1h" });
-    res.status(200).send(token);
+    const token = jwt.sign({ userId: user._id }, "secret-key", { expiresIn: "4s" });
+    return res.status(200).send(token);
   } catch (err) {
     console.log(err);
-    res.status(500).send(err);
+    return res.status(500).send('Internal Server Error');
   }
 });
 
